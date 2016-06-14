@@ -19,6 +19,7 @@ define appstore::app(
     command     => "open -W '${helper}' && [ -d '${path}' ]",
     creates     => $path,
     timeout     => 0,
+    returns     => [0, 1],
     environment => [
       "BOXEN_APPSTORE_SOURCE=macappstore://itunes.apple.com/${appstore::store}/app/${source}",
       "BOXEN_APPSTORE_ID=${appstore::appleid}",
